@@ -4,25 +4,16 @@ from setuptools import setup
 from setuptools import find_packages
 
 install_requires = [
-    'anyjson==0.3.1',
-    'argparse==1.2.1',
-    'disqus-flask==0.1.18',
-    'Flask==0.8',
-    'gevent==1.0b2',
-    'gunicorn==0.13.4',
-    'hiredis==0.1.0',
-    'logutils==0.3.2',
-    'mrsdash==0.1.17',
-    'ordereddict==1.1',
-    'paste==1.7.5.1',
-    'path.py==2.2.2',
-    'Paver==1.0.5',
-    'progressbar==2.3',
-    'raven==1.9.3',
-    'scales==1.0.2',
-    'simplejson==2.4.0',
-    'thoonk==1.0.1.0',
-    'ujson==1.18',
+    'Flask',
+    'gevent',
+    'gunicorn',
+    'logutils',
+    'ordereddict',
+    'path.py',
+    'Paver',
+    'progressbar',
+    'simplejson',
+    'requests'
     ]
 
 package_data = {

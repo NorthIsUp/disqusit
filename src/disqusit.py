@@ -35,10 +35,10 @@ class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(500))
     title = db.Column(db.String(500))
-    shortname = db.Column(db.String(100))		##TODO Are these max lengths ok?
-    disqus_identifier = db.Column(db.String(100))
-    disqus_votes = db.Column(db.Integer)
-    disqusit_votes = db.Column(db.Integer)
+    #shortname = db.Column(db.String(100))		##TODO Are these max lengths ok?
+    #disqus_identifier = db.Column(db.String(100))
+    #disqus_votes = db.Column(db.Integer)
+    #disqusit_votes = db.Column(db.Integer)
 
     def __init__(self, url=None, shortname=None, disqus_id=None,
                  disqus_votes=0, disqusit_votes=0):
@@ -72,7 +72,11 @@ class SubmitLinkForm(Form):
 
 @app.route("/news")
 def news():
-    return render_template('base.html', form=SubmitLinkForm(request.form))
+
+    links = Link.query.all()
+    print links[0]
+
+    return render_template('base.html', links=links, form=SubmitLinkForm(request.form) )
 
 
 @app.route('/news', methods=['POST'])
@@ -85,9 +89,11 @@ def submitLink():
         disqus_identifier = 0
         disqus_votes = 0
         disqusit_votes = 0
-
-        link = Link(form.link, form.title,  shortname, disqus_identifier, disqus_votes, disqusit_votes)
+        print form.link.data
+        link = Link(form.link.data, form.title.data)#shortname, disqus_identifier, disqus_votes, disqusit_votes)
         db.session.add(link)
+        db.session.commit()
+        return redirect(url_for('news'))
 
 ## AUTH STUFF (DO NOT CHANGE)
 

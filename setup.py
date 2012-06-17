@@ -14,6 +14,8 @@ install_requires = [
     'progressbar',
     'simplejson',
     'requests'
+    'wtforms'
+    'flask-sqlalchemy'
     ]
 
 package_data = {

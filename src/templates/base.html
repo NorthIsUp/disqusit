@@ -42,7 +42,7 @@
 			<div class="row">
 				<div class="span4">
 					{% from "_formhelpers.html" import form_field %}
-					<form method=post action="/register">
+					<form method=post action="/news">
 						<dl>
 							{{ form_field(form.title) }}
 							{{ form_field(form.link) }}
@@ -51,6 +51,13 @@
 					</form>
 				</div>
 			</div>
+			<ul>
+				{% for link in links %}
+				<li>
+					<a href="{{ link.url }}">{{link.title}}</a>
+				</li>
+				{% endfor %}
+			</ul>
 			<div class="row">
 				<div class="offset5 span6">
 					<footer>

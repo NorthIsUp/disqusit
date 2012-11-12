@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/adam/Documents/sandbox/disqusit",
+			"folder_exclude_patterns": [
+			"*.egg",
+			"build",
+			"dist",
+			"*.egg-info",
+			"doc/_*",
+			".ropeproject"
+			],
+			"file_exclude_patterns": [
+			"*.egg",
+			"*.sublime-workspace"
+			]
+		}
+	]
+}

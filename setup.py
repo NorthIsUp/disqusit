@@ -2,52 +2,56 @@
 
 from setuptools import setup
 from setuptools import find_packages
+from sys import argv
+
+__version__ = '0.1'
+
+
+dependency_links = [
+    'http://svn.edgewall.org/repos/babel/trunk'
+]
 
 install_requires = [
-    'Flask',
+    'babel',
+    'BabelDjango',
+    'django-bootstrap-toolkit',
+    'django-debug-toolbar',
+    'django-social-auth',
     'gevent',
     'gunicorn',
-    'logutils',
-    'ordereddict',
     'path.py',
-    'Paver',
-    'progressbar',
+    'requests',
     'simplejson',
-    'requests'
-    'wtforms'
-    'flask-sqlalchemy'
     ]
 
-package_data = {
-    'realertime': [
-        r'config/*.json'
-        ],
-}
-
 tests_require = [
-    'Flask-Testing',
-    'mock==0.8',
-    'pyflakes',
     'unittest2',
     ]
 
-setup_requires = [
-    'nose',
-    'nosexcover',
-]
+setup_requires = []
+
+optional_requires = {
+    'nose': ('nose',),
+    'cover': ('nosexcover', 'coverage',),
+}
+
+for k, v in optional_requires.iteritems():
+    if True in map(lambda x: k in x, argv):
+        setup_requires.extend(v)
 
 setup(
-    author='Adam Hitchcock',
-    author_email='adam@disqus.com',
-    description='Real time server based around gevent',
+    author='adam hitchcock',
+    author_email='adam@northisup.com',
+    dependency_links=dependency_links,
+    description='disqus all the things!',
     include_package_data=True,
     install_requires=install_requires,
     name='disqusit',
     packages=find_packages(exclude=["tests"]),
-    package_data=package_data,
     setup_requires=setup_requires,
     test_suite='nose.collector',
     tests_require=tests_require,
-    version=0.1,
+    url='http://github.com/disqus/disqusit',
+    version=__version__,
     zip_safe=False,
 )

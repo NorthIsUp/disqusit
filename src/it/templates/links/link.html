@@ -1,0 +1,14 @@
+{% extends "it_base.html" %}
+{% load activity_extras %}
+
+{% block title %} Listing Invoices {% endblock %}
+
+{% block week_overview %}
+    <ul>
+    {% for link in object_list %}
+        <li>
+        <!-- {{ activity.start_date }}<span class="activitysparkline">{{ activity|fuel_by_bucket }}</span> -->
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

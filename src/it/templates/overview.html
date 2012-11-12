@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load activity_extras %}
+{% load babel %}
+
+{% block title %} Listing Invoices {% endblock %}
+
+{% block week_overview %}
+<ul>
+	<table class="table table-striped">
+	{% for activity in activities %}
+		<tr>
+			<td class="span2">{{ activity.start_date|date:"D, M d" }}</td>
+			<td class="span2">total: {{ activity.total_fuel }}</td>
+			<td class="span8"><span class="activitysparkline">{{ activity|fuel_by_bucket }}</span></td>
+		</tr>
+	{% endfor %}
+	</table>
+</ul>
+{% endblock %}

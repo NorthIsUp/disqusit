@@ -1,0 +1,18 @@
+{% load i18n %}
+
+{% if user.is_authenticated %}
+<ul class="nav pull-right">
+  <span class="label label-inverse">{% trans 'Hello' %} {{ user.username }},</span>
+  <li class="divider-vertical"></li>
+  <a href="{% url django.contrib.auth.views.password_change %}">{% trans "Change password" %}</a>
+  <a class="btn btn-inverse" href="{% url django.contrib.auth.views.logout %}">{% trans 'Leave' %}</a>
+</ul>
+
+{% else %}
+<form class="form-inline pull-right" style="margin: 0;" action="{% url django.contrib.auth.views.login %}" method="post">
+  {% csrf_token %}
+  <input class="input-small" name="username" id="id_username" type="text" placeholder="{% trans 'Username' %}">
+  <input class="input-small" name="password" id="id_password" type="password" placeholder="{% trans 'Password' %}">
+  <button class="btn" type="submit">{% trans 'Log in' %}</button>
+</form>
+{% endif %}
